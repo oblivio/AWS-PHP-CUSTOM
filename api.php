@@ -97,13 +97,11 @@ $result = $client->getMetricStatistics(array(
     //'Unit' => 'string [Seconds | Microseconds | Milliseconds | etc... ', //not required
 ));
 
-$json_result = array(
+$json_result = json_encode(array(
                     "Datapoints" => $result->get('Datapoints'),
                     "Label" => $result->get('Label')
-                );
+                ));
 
-echo json_encode($json_result);
+echo $json_result;
 
-
-?>
 
