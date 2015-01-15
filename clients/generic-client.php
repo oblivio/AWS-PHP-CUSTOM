@@ -4,6 +4,9 @@ require 'aws-php/aws-autoloader.php';
 
 use Aws\CloudWatch\CloudWatchClient;
 
+$old_default_timezone = date_default_timezone_get();
+date_default_timezone_set('UTC');
+
 /* 
     This demo assumes that the VM has an IAM role assigned.
 */
@@ -35,6 +38,7 @@ $client = CloudWatchClient::factory(array(
 //Define Variables and their default values:
 $aws_namespace = 'AWS/Billing';
 $aws_metric = 'EstimatedCharges';
+$aws_service = '';
 $aws_query_start = strtotime('-14 days');
 $aws_query_end = strtotime('now');
 $aws_query_period = 86400;
@@ -52,8 +56,8 @@ if(!empty($aws_request['aws_namespace'])){
 if(!empty($aws_request['aws_metric'])){
     $aws_metric = $aws_request['aws_metric'];
 }
-if(!empty($aws_request['aws_metric'])){
-	$aws_service = $aws_request['aws_metric'];
+if(!empty($aws_request['aws_service'])){
+	$aws_service = $aws_request['aws_service'];
 }
 if(!empty($aws_request['aws_query_start'])){
     $aws_query_start = $aws_request['aws_query_start'];
@@ -111,4 +115,5 @@ $json_result = json_encode(array(
 
 echo $json_result;
 
+date_default_timezone_set($old_default_timezone);
 
