@@ -17,9 +17,12 @@
 /**
     *   Modified for Custom Region functionality;
 */
-define('__AWS_CLOUDWATCH_DIR__', dirname(dirname(__FILE__)));
 
-require_once(__AWS_CLOUDWATCH_DIR__.'/Resources/cloudwatch-custom-regions.php');
+if(!defined('__AWS_CLOUDWATCH_DIR__')){
+	define('__AWS_CLOUDWATCH_DIR__', dirname(dirname(__FILE__)));
+}
+
+require (__AWS_CLOUDWATCH_DIR__.'/Resources/cloudwatch-custom-regions.php');
 
 $default_regions = array(
         'us-east-1' => array(

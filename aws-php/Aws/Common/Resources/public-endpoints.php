@@ -2,9 +2,10 @@
 /*
     Modified for Custom Endpoint Functionality
 */
-define('__AWS_COMMON_DIR__', dirname(dirname(__FILE__)));
-
-require_once(__AWS_COMMON_DIR__.'/Resources/custom-endpoints.php');
+if(!defined('__AWS_COMMON_DIR__')){
+	define('__AWS_COMMON_DIR__', dirname(dirname(__FILE__)));
+}
+require (__AWS_COMMON_DIR__.'/Resources/custom-endpoints.php');
 
 $public_endpoints = array(
         '*/*' => array(
