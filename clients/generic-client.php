@@ -4,7 +4,6 @@ require 'aws-php/aws-autoloader.php';
 
 use Aws\CloudWatch\CloudWatchClient;
 
-$old_default_timezone = date_default_timezone_get();
 date_default_timezone_set('UTC');
 
 /* 
@@ -115,5 +114,4 @@ $json_result = json_encode(array(
 
 echo $json_result;
 
-date_default_timezone_set($old_default_timezone);
 
